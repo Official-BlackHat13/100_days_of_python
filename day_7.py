@@ -3,12 +3,15 @@ import random
 random_words = ['desktop', 'telephone', 'monday']
 guess = input('guess a letter: ').lower()
 
-print(guess)
+chosen_word = list(random.choice(random_words))
 
-chosen_word = random.choice(random_words)
+blank = ['_']
 
-for letter in chosen_word:
+while not len(blank) == len(chosen_word):
+    blank += '_'
+
+for position in range(len(chosen_word)):
+    letter = chosen_word[position]
     if letter == guess:
-        print('innit')
-    else:
-        print('try again')        
+        blank[position] = letter
+print(blank)
