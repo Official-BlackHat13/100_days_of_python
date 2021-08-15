@@ -1,17 +1,95 @@
 import random
 # hangman
-random_words = ['desktop', 'telephone', 'monday']
-guess = input('guess a letter: ').lower()
+abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
 
+end_of_game = False
+random_words = ['desktop', 'telephone', 'monday']
+# chosing the random word from the list
 chosen_word = list(random.choice(random_words))
 
+# creating the blank list
 blank = ['_']
-
-while not len(blank) == len(chosen_word):
+word_lenght = len(chosen_word)
+while not len(blank) == word_lenght:
     blank += '_'
 
-for position in range(len(chosen_word)):
-    letter = chosen_word[position]
-    if letter == guess:
-        blank[position] = letter
-print(blank)
+lives = 6
+hangman = 0
+
+while not end_of_game:
+    # getting the user to guess a letter
+    guess = input('guess a letter: ').lower()
+
+    # checking and inserting the 'guess' letter into the 'blank' list
+    for position in range(word_lenght):
+        letter = chosen_word[position]
+        if letter == guess:
+            blank[position] = letter
+    # lose
+    if not guess in chosen_word:
+        hangman += 1
+        lives -= 1
+        if lives == 0:
+            end_of_game = True
+            print('you lose')
+    # win
+    if not '_' in blank:
+        end_of_game = True
+        print('you win')
+    print(f"{stages[hangman]}\n-\n{' '.join(blank)}")
