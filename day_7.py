@@ -88,9 +88,9 @@ while not end_of_game:
         if lives == 0:
             end_of_game = True
             print('you lose')
-        print(f'\nyou have left {lives}')
+        print(f'---------------\n\nyou have left {lives}')
     # win
     if not '_' in blank:
         end_of_game = True
         print('\nyou win')
-    print(f"{stages[hangman]}\n-\n{' '.join(blank)}")
+    print(f"---------------\n{stages[hangman]}\n\n{' '.join(blank)}\n---------------")
