@@ -1,67 +1,12 @@
 import random
+from ascii_art import *
+from random_words import *
 # hangman
-abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
 
+print(hangman_text)
 end_of_game = False
-random_words = ['desktop', 'telephone', 'monday']
 # chosing the random word from the list
-chosen_word = list(random.choice(random_words))
+chosen_word = list(random.choice(random_words_list))
 
 # creating the blank list
 blank = ['_']
@@ -87,10 +32,10 @@ while not end_of_game:
         lives -= 1
         if lives == 0:
             end_of_game = True
-            print('you lose')
+            print(f"you lose, your word was {' '.join(chosen_word)}")
         print(f'you have left {lives}')
     # win
     if not '_' in blank:
         end_of_game = True
-        print('\nyou win')
+        print('\nyou won')
     print(f"{stages[hangman]}\n\n{' '.join(blank)}")
