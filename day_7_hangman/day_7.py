@@ -70,7 +70,7 @@ while not len(blank) == word_lenght:
     blank += '_'
 
 lives = 6
-hangman = 0
+hangman = 6
 
 while not end_of_game:
     # getting the user to guess a letter
@@ -81,16 +81,16 @@ while not end_of_game:
         letter = chosen_word[position]
         if letter == guess:
             blank[position] = letter
-    # lose
+    # losing lifes
     if not guess in chosen_word:
-        hangman += 1
+        hangman -= 1
         lives -= 1
         if lives == 0:
             end_of_game = True
             print('you lose')
-        print(f'---------------\n\nyou have left {lives}')
+        print(f'you have left {lives}')
     # win
     if not '_' in blank:
         end_of_game = True
         print('\nyou win')
-    print(f"---------------\n{stages[hangman]}\n\n{' '.join(blank)}\n---------------")
+    print(f"{stages[hangman]}\n\n{' '.join(blank)}")
