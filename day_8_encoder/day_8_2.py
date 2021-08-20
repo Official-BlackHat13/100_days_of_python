@@ -17,7 +17,7 @@ if direction == 'encode':
     encrypt(text_func=text, shift_func=shift, encrypted_word_func=encrypted_word)
 
 
-
+# kakaK
 
 
 
