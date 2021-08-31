@@ -21,10 +21,6 @@ def game():
     auction(name, bid, finish)
 
 
-
-
-
-
 while running:
     print('\n\n\n\n\n\n\n\n\n\n\n')
     game()
