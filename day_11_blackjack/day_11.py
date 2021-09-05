@@ -85,7 +85,7 @@ def game():
         if comp_total >= 21 and comp_total == user_total:
             print(f'\ndraw\ncomputer\'s cards: {comp_cards}\nyour cards:{user_cards}')
             return
-        print(f'computer\'s first card: {comp_cards}\nyour card(s): {user_cards}, current score: {user_total}')
+        print(f'computer\'s first card: {comp_cards[0]}\nyour card(s): {user_cards}, current score: {user_total}')
         game()
 
     if should_continue == 'n':
