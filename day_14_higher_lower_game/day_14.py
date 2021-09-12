@@ -2,14 +2,12 @@
 from game_data import *
 from random import randint
 
-
 def chose_account():
     global accounts
     random_number = randint(0, len(accounts) - 1)
     random_account = accounts[random_number]
     accounts.remove(accounts[random_number])
     return random_account
-
 
 name1 = chose_account()
 print(f"\n{name1['name']} is a {name1['description']} from the {name1['country']} with {name1['follower_count']}M followers on Instagram.")
@@ -42,7 +40,6 @@ def game():
             print(f"\nyou lost, {name2['name']} got {name2['follower_count']}M followers.")
             return
 
-
     if user_guess == name1['name']:
         higher_or_not(name1, name2)
     elif user_guess == name2['name']:
@@ -50,8 +47,4 @@ def game():
     else:
         print('\n!! learn to type you fucking donkey !!')
         return
-
-
-
-
 game()
