@@ -1,13 +1,16 @@
 from machine import *
 
 
-
 def game():
-
     # check order
     def check_order():
+        # check the type of coin the user wants and quantity of it
         def coin_identifier():
-            type_of_coin = input(f"we process 'pennies', 'nickels', 'dimes', 'quarters'. Please choose one")
+            type_of_coin = input(f"we process 'pennies', 'nickels', 'dimes', 'quarters'. Please choose one").lower()
+            quantity = int(input(f"how many of them?: "))
+            if type_of_coin == 'penny' or type_of_coin == 'pennies':
+                machine_resources['money'] = compatible_coins[0]['value'] * quantity
+                print(machine_resources['money'])
 
         # check if the machine got the resources for the chosen type of coffee
         def check_modify_availability():
@@ -18,7 +21,7 @@ def game():
             if machine_resources['coffee_powder'] <= coffee['coffee_powder_needed']:
                 print('not enough coffee')
             if machine_resources['money'] <= coffee['price']:
-                print(f"please insert more money (currently got: ${machine['money']})")
+                print(f"please insert more money (currently got: ${machine_resources['money']})")
             else:
                 machine_resources['money'] -= coffee['price']
                 print(machine_resources['money'])
@@ -26,6 +29,7 @@ def game():
         which_coffee = input('what would you like? (Espresso($1.50)/Latte($2.50)/Cappuccino($3.00)/nothing?: ').lower()
         if which_coffee == 'espresso':
             coffee = coffees[0]
+            coin_identifier()
             check_modify_availability()
             print(coffee)
         elif which_coffee == 'latte':
@@ -47,8 +51,6 @@ def game():
             game()
 
     check_order()
-
-
 
 
 game()

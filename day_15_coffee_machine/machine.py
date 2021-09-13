@@ -1,8 +1,8 @@
 machine_resources = {
-    'water': 100,
-    'milk': 100,
+    'water': 500,
+    'milk': 300,
     'coffee_powder': 110,
-    'money': 23
+    'money': 0
 }
 coffees = [
     {
@@ -46,3 +46,4 @@ compatible_coins = [
         'value': 0.25
     }
 ]
+print(compatible_coins[0]['type'])
