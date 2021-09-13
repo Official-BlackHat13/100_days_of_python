@@ -46,4 +46,3 @@ compatible_coins = [
         'value': 0.25
     }
 ]
-print(compatible_coins[0]['type'])
