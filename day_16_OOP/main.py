@@ -12,5 +12,5 @@
 
 from prettytable import PrettyTable
 
-table = PrettyTable
+table = PrettyTable()
 print(table)
