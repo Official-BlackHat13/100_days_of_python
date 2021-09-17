@@ -12,9 +12,10 @@ class User:
 
 user_1 = User('001', 'huba')
 user_2 = User('002', 'satoshi')
+user_2.follow(user_1)
+user_2.follow(user_1)
 
-user_2.follow(user_1)
-user_2.follow(user_1)
+
 print(user_1.followers)
 print(user_2.following)
 print(user_1.following)
