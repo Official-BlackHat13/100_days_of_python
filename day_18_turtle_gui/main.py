@@ -1,7 +1,50 @@
+import colorgram
+import turtle as t
 from random import randint
+from turtle import Turtle, Screen
+t.colormode(255)
+colors = [(249, 218, 239), (229, 236, 244), (245, 233, 221), (200, 76, 9), (215, 246, 234), (227, 74, 153),
+          (229, 103, 58), (222, 165, 129), (15, 73, 148), (189, 98, 39), (251, 62, 234), (96, 223, 174),
+          (120, 151, 189), (3, 236, 168), (35, 139, 37), (241, 189, 159), (44, 15, 26), (4, 48, 97), (40, 102, 171),
+          (248, 1, 239)]
 
-r = randint(0, 255)
-g = randint(0, 255)
-b = randint(0, 255)
-bot_color = (r, g, b)
-print(bot_color)
+j = Turtle()
+
+j.hideturtle()
+j.pensize(15)
+j.penup()
+j.speed(30)
+j.setx(-250)
+j.sety(-250)
+
+
+def line():
+    for _ in range(9):
+        j.color(colors[randint(0, 19)])
+        j.dot()
+        j.forward(54)
+        j.color(colors[randint(0, 19)])
+        j.dot()
+
+
+def left():
+    j.left(90)
+    j.forward(54)
+    j.left(90)
+
+
+def right():
+    j.right(90)
+    j.forward(54)
+    j.right(90)
+
+
+for _ in range(5):
+    line()
+    left()
+    line()
+    right()
+
+
+screen = Screen()
+screen.exitonclick()
