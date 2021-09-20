@@ -11,31 +11,30 @@ colors = [(249, 218, 239), (229, 236, 244), (245, 233, 221), (200, 76, 9), (215,
 j = Turtle()
 
 j.hideturtle()
-j.pensize(15)
 j.penup()
-j.speed(30)
-j.setx(-250)
+j.speed(300)
+j.setx(-260)
 j.sety(-250)
 
 
 def line():
     for _ in range(9):
         j.color(colors[randint(0, 19)])
-        j.dot()
-        j.forward(54)
+        j.dot(20)
+        j.forward(50)
         j.color(colors[randint(0, 19)])
-        j.dot()
+        j.dot(20)
 
 
 def left():
     j.left(90)
-    j.forward(54)
+    j.forward(50)
     j.left(90)
 
 
 def right():
     j.right(90)
-    j.forward(54)
+    j.forward(50)
     j.right(90)
 
 
