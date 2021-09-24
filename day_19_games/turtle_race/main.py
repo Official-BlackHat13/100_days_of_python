@@ -18,8 +18,8 @@ for _ in range(6):
     new_turtle.goto(x=-230, y=y)
     all_turtles.append(new_turtle)
 
-print(all_turtles)
-if user_bet:
+
+if user_bet != '':
     is_race_on = True
 
 while is_race_on:
@@ -35,8 +35,5 @@ while is_race_on:
 
         rand_distance = randint(1, 10)
         t.forward(rand_distance)
-
-
-
 
 screen.exitonclick()
