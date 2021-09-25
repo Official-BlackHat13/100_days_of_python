@@ -14,9 +14,10 @@ screen.bgcolor((186, 199, 1))
 screen.title('Snake')
 screen.tracer(0)
 
-score = Scoreboard()
+
 snake = Snake()
 food = Food()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(snake.up, 'Up')
@@ -31,9 +32,9 @@ while game_is_on:
     snake.move()
 
     # detect collision with food
-    def got_food():
-        if snake.head_of_snake.distance(food) < 15:
-            food.refresh()
 
+    if snake.head_of_snake.distance(food) < 15:
+        food.refresh()
+        scoreboard.increase_score()
 
 screen.exitonclick()

@@ -1,7 +1,9 @@
 from turtle import Turtle
 import turtle as t
 import random
+
 t.colormode(255)
+
 
 class Food(Turtle):
     def __init__(self):
