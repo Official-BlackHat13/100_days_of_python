@@ -17,9 +17,13 @@ class Scoreboard(Turtle):
     def update_scoreboard(self):
         self.write(f"Score: {self.score}", align=ALIGNMENT, font=FONT)
 
-    def game_over(self):
+    def wall_hit(self):
         self.goto(0, 0)
-        self.write(f"Game Over\nFinal score: {self.score}", align=ALIGNMENT, font=FONT)
+        self.write(f"Game Over\nYou hit a wall\nFinal score: {self.score}", align=ALIGNMENT, font=FONT)
+
+    def tail_hit(self):
+        self.goto(0, 0)
+        self.write(f"Game Over\nYou hit your tail\nFinal score: {self.score}", align=ALIGNMENT, font=FONT)
 
     def increase_score(self):
         self.score += 1
