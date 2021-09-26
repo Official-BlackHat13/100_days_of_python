@@ -14,7 +14,6 @@ screen.bgcolor((186, 199, 1))
 screen.title('Snake')
 screen.tracer(0)
 
-
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
@@ -35,6 +34,13 @@ while game_is_on:
 
     if snake.head_of_snake.distance(food) < 15:
         food.refresh()
+        snake.extend()
         scoreboard.increase_score()
+
+    # detect collision with wall
+
+    if snake.head_of_snake.xcor() > 280 or snake.head_of_snake.xcor() < -280 or snake.head_of_snake.ycor() > 280 or snake.head_of_snake.ycor() < -280:
+        game_is_on = False
+        scoreboard.game_over()
 
 screen.exitonclick()
