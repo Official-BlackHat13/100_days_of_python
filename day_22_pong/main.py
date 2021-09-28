@@ -1,9 +1,11 @@
-from turtle import Screen
+from turtle import Turtle, Screen
 from equipment import Player1, Player2
+from middle_line import Line
 import time
 
 player1 = Player1()
 player2 = Player2()
+line = Line()
 
 screen = Screen()
 screen.setup(width=800, height=800)

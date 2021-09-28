@@ -22,14 +22,18 @@ class Player1:
         self.paddle.setheading(UP)
 
     def move_up(self):
-        self.paddle.setheading(UP)
-        self.paddle.forward(DISTANCE)
-        screen.update()
+        if self.paddle.position() != (370.00, 360.00):
+            self.paddle.setheading(UP)
+            screen.update()
+            self.paddle.forward(DISTANCE)
+            print(self.paddle.position())
 
     def move_down(self):
-        self.paddle.setheading(DOWN)
-        screen.update()
-        self.paddle.forward(DISTANCE)
+        if self.paddle.position() != (370.00, -360.00):
+            self.paddle.setheading(DOWN)
+            screen.update()
+            self.paddle.forward(DISTANCE)
+            print(self.paddle.position())
 
 
 class Player2(Player1):
@@ -39,7 +43,9 @@ class Player2(Player1):
         self.paddle.goto((-370, 0))
 
     def up(self):
-        self.move_up()
+        if self.paddle.position() != (-370.00, 360.00):
+            self.move_up()
 
     def down(self):
-        self.move_down()
+        if self.paddle.position() != (-370.00, -360.00):
+            self.move_down()
