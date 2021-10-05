@@ -43,7 +43,7 @@ data = pandas.read_csv("weather_data.csv")
 # # get data in columns
 # print(data["condition"])
 # print(data.condition)
-
+#
 # print(data[data.day == 'Monday'])
 #
 # print(data[data.temp == data.temp.max()])
@@ -51,14 +51,15 @@ data = pandas.read_csv("weather_data.csv")
 # monday = data[data.day == 'Monday']
 # temp_in_f = (monday.temp * 1.8) + 32
 # print(temp_in_f)
-
+#
 # create a dataframe from scratch
-
-data_dict = {
-    'students': ['James', 'Ben', 'Logan'],
-    'scores': [12, 43, 54]
-}
-
-data = pandas.DataFrame(data_dict)
-data.to_csv('new_data.csv')
-print(data)
+#
+# data_dict = {
+#     'students': ['James', 'Ben', 'Logan'],
+#     'scores': [12, 43, 54]
+# }
+#
+# data = pandas.DataFrame(data_dict)
+# data.to_csv('new_data.csv')
+# print(data)
+#
