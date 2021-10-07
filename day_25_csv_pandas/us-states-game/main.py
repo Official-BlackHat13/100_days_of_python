@@ -20,13 +20,21 @@ while round_count <= 50:
     state = data[data['state'] == guess_state]
     if guess_state in all_states:
         text.write_state(guess_state, int(state.x), int(state.y))
+        all_states.remove(guess_state)
         correct_answers += 1
 
-    if correct_answers == 3:
+    if guess_state == 'Exit':
+        break
+
+    if correct_answers == 50:
         text.won()
-        round_count = 50
+        break
 
     round_count += 1
     if round_count == 50:
         text.end_of_game()
+
+df = pandas.DataFrame(all_states)
+df.to_csv('states_to_learn.csv')
+
 turtle.mainloop()
