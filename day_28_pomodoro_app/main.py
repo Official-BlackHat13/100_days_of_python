@@ -109,7 +109,7 @@ reset_button = Button(image=reset_button_img, bg=GREEN, command=reset_timer, hig
 reset_button.grid(column=2, row=2)
 
 # adding checkmarks
-check_marks = Label(fg=BLUE, bg=GREEN)
+check_marks = Label(fg=ORANGE, bg=GREEN)
 check_marks.grid(column=1, row=3)
 
 window.mainloop()
