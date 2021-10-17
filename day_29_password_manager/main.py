@@ -1,9 +1,16 @@
 from tkinter import *
+from tkinter import messagebox
+from password_generator import generate_password
 
 FONT_NAME = "Courier"
 
 
 # ----------------------- PASSWORD GENERATOR ----------------------- #
+def pass_password():
+    password = generate_password()
+    password_input.delete(0, END)
+    password_input.insert(0, password)
+
 
 # ----------------------- SAVE PASSWORD ----------------------- #
 
@@ -11,11 +18,17 @@ def save():
     website = website_input.get()
     username = username_input.get()
     password = password_input.get()
-    with open('data.txt', 'a') as data_file:
-        data_file.write(f"{website} | {username} | {password}\n")
-        website_input.delete(0, END)
-        username_input.delete(0, END)
-        password_input.delete(0, END)
+
+    if len(website) == 0 or len(password) == 0:
+        messagebox.showinfo(title='hey fuckface!', message='enter something!')
+    else:
+        is_ok = messagebox.askokcancel(title=website, message=f'r u sure?')
+
+        if is_ok:
+            with open('data.txt', 'a') as data_file:
+                data_file.write(f"{website} | {username} | {password}\n")
+                website_input.delete(0, END)
+                password_input.delete(0, END)
 
 
 # ----------------------- UI SETUP ----------------------- #
@@ -69,7 +82,7 @@ password_input = Entry(width=35)
 password_input.grid(row=3, column=1, columnspan=2)
 
 # button
-generate_button = Button(text='generate', bg='#f0f0f0')
+generate_button = Button(text='generate', bg='#f0f0f0', command=pass_password)
 generate_button.grid(row=3, column=2, columnspan=2)
 
 # -- submit field -- #
