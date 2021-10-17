@@ -8,22 +8,14 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 
 def generate_password():
-    password = ''
+    password = []
 
-    for letter in range(4):
-        random_letters = random.randint(0, 52)
-        password += letters[random_letters - 1]
+    password += [random.choice(letters) for _ in range(4)]
 
-    for symbol in range(4):
-        random_symbols = random.randint(0, 9)
-        password += symbols[random_symbols - 1]
+    password += [random.choice(symbols) for _ in range(4)]
 
-    for number in range(4):
-        random_numbers = random.randint(0, 10)
-        password += numbers[random_numbers - 1]
+    password += [random.choice(numbers) for _ in range(4)]
 
-    list_password = list(password)
-    random.shuffle(list_password)
-    password = ''.join(list_password)
+    random.shuffle(password)
+    password = ''.join(password)
     return password
-
