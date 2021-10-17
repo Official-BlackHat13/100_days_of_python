@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from password_generator import generate_password
 
+
 FONT_NAME = "Courier"
 
 
