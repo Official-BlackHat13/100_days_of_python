@@ -30,6 +30,7 @@ def save():
                 data_file.write(f"{website} | {username} | {password}\n")
                 website_input.delete(0, END)
                 password_input.delete(0, END)
+                messagebox.showinfo(message='done.')
 
 
 # ----------------------- UI SETUP ----------------------- #
