@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from password_generator import generate_password
-
+import json
 
 FONT_NAME = "Courier"
 
@@ -13,24 +13,44 @@ def pass_password():
     password_input.insert(0, password)
 
 
+# ----------------------- SEARCH ----------------------- #
+def search():
+    website = website_input.get()
+    print(website)
+
+
 # ----------------------- SAVE PASSWORD ----------------------- #
 
 def save():
     website = website_input.get()
     username = username_input.get()
     password = password_input.get()
-
+    new_data = {
+        website: {
+            'username': username,
+            'password': password
+        }
+    }
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title='hey fuckface!', message='enter something!')
     else:
-        is_ok = messagebox.askokcancel(title=website, message=f'r u sure?')
+        try:
+            with open('data.json', 'r') as data_file:
+                data = json.load(data_file)
+        except FileNotFoundError:
+            with open('data.json', 'w') as data_file:
+                json.dump(new_data, data_file, indent=4)
+        else:
+            # update new_data
+            data.update(new_data)
 
-        if is_ok:
-            with open('data.txt', 'a') as data_file:
-                data_file.write(f"{website} | {username} | {password}\n")
-                website_input.delete(0, END)
-                password_input.delete(0, END)
-                messagebox.showinfo(message='done.')
+            with open('data.json', 'w') as data_file:
+                # saving updated data
+                json.dump(data, data_file, indent=4)
+        finally:
+            website_input.delete(0, END)
+            password_input.delete(0, END)
+            messagebox.showinfo(message='done.')
 
 
 # ----------------------- UI SETUP ----------------------- #
@@ -58,9 +78,13 @@ website_label = Label(text='website:', font=(FONT_NAME, 14), bg='white')
 website_label.grid(row=1, column=0)
 
 # input
-website_input = Entry(width=35)
-website_input.grid(row=1, column=1, columnspan=2)
+website_input = Entry(width=25)
+website_input.grid(row=1, column=1)
 website_input.focus()
+
+# button
+search_button = Button(text='search', bg='#f0f0f0', width='7', command=search)
+search_button.grid(row=1, column=2, columnspan=2)
 
 # -- email/username field -- #
 
@@ -80,11 +104,11 @@ password_label = Label(text='password:', font=(FONT_NAME, 14), bg='white')
 password_label.grid(row=3, column=0)
 
 # output
-password_input = Entry(width=35)
-password_input.grid(row=3, column=1, columnspan=2)
+password_input = Entry(width=25)
+password_input.grid(row=3, column=1)
 
 # button
-generate_button = Button(text='generate', bg='#f0f0f0', command=pass_password)
+generate_button = Button(text='generate', bg='#f0f0f0', command=pass_password, width=7)
 generate_button.grid(row=3, column=2, columnspan=2)
 
 # -- submit field -- #
