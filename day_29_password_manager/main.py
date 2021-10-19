@@ -16,7 +16,17 @@ def pass_password():
 # ----------------------- SEARCH ----------------------- #
 def search():
     website = website_input.get()
-    print(website)
+    try:
+        with open('data.json', 'r') as data_file:
+            data = json.load(data_file)
+            if website in data:
+                email = data[website]['username']
+                password = data[website]['password']
+                messagebox.showinfo(title=f'{website}', message=f'username: {email}\npassword: {password}')
+            else:
+                messagebox.showinfo(title=f'{website}', message=f'"{website}" not found.')
+    except FileNotFoundError:
+        messagebox.showinfo(title=f'{website}', message=f'"{website}" not found.')
 
 
 # ----------------------- SAVE PASSWORD ----------------------- #
