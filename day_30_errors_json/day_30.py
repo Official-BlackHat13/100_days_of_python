@@ -1,4 +1,4 @@
-# FileNotFound
+# # FileNotFound
 
 try:
     file = open('file.txt')
@@ -13,5 +13,10 @@ else:
     content = file.read()
     print(content)
 finally:
-    file.close()
-    print(f'file was closed')
+    raise KeyError('this is a made up error')
+
+# height = float(input('enter your height: '))
+# weight = float(input('enter your height: '))
+#
+# if height > 100:
+#     raise ValueError('the height should not be over 100.')
