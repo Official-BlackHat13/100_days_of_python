@@ -26,7 +26,7 @@ def search():
             else:
                 messagebox.showinfo(title=f'{website}', message=f'"{website}" not found.')
     except FileNotFoundError:
-        messagebox.showinfo(title=f'{website}', message=f'"{website}" not found.')
+        messagebox.showinfo(title=f'No data found', message=f'no saved passwords yet')
 
 
 # ----------------------- SAVE PASSWORD ----------------------- #
