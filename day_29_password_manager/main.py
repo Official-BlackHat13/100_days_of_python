@@ -42,7 +42,7 @@ def save():
         }
     }
     if len(website) == 0 or len(password) == 0:
-        messagebox.showinfo(title='hey fuckface!', message='enter something!')
+        messagebox.showinfo(title='hey fuck face!', message='enter something!')
     else:
         try:
             with open('data.json', 'r') as data_file:

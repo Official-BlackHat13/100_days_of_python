@@ -24,7 +24,7 @@ import pandas
 data = pandas.read_csv("weather_data.csv")
 print(data)
 print(data['temp'])
-## converting to a dictionary
+# converting to a dictionary
 data_dict = data.to_dict()
 
 sum_of_temps = 0
@@ -52,7 +52,7 @@ monday = data[data.day == 'Monday']
 temp_in_f = (monday.temp * 1.8) + 32
 print(temp_in_f)
 
-## create a dataframe from scratch
+# create a dataframe from scratch
 
 data_dict = {
     'students': ['James', 'Ben', 'Logan'],
@@ -62,4 +62,3 @@ data_dict = {
 data = pandas.DataFrame(data_dict)
 data.to_csv('new_data.csv')
 print(data)
-
