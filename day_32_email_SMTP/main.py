@@ -30,3 +30,6 @@ day_of_week = now.weekday()
 date_of_birth = dt.datetime(year=2004, month=12, day=20)
 
 print(date_of_birth)
+print(date_of_birth)
+print(date_of_birth)
+print(date_of_birth)
